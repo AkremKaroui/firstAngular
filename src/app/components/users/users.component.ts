@@ -8,8 +8,12 @@ import { User } from '../../models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  extended: boolean = true;
-  loaded: boolean = false;
+  isExtended: boolean = true;
+  isLoaded: boolean = false;
+  enableAdd: boolean = false;
+  currentClasses = {};
+  currentStyles = {};
+
   constructor() { }
 
   ngOnInit(): void {
@@ -23,7 +27,9 @@ export class UsersComponent implements OnInit {
             street: '50 Main st',
             city: 'Boston',
             state: 'MA'
-          }
+          },
+          image: 'https://dummyimage.com/600x600/600/fff&text=John',
+          isActive: true,
         },
         {
           firstName: 'Kevin',
@@ -33,7 +39,9 @@ export class UsersComponent implements OnInit {
             street: '20 School st',
             city: 'Lynn',
             state: 'MA'
-          }
+          },
+          image: 'https://dummyimage.com/600x600/040/fff&text=Kevin',
+          isActive: false,
         },
         {
           firstName: 'Karen',
@@ -43,16 +51,21 @@ export class UsersComponent implements OnInit {
             street: '55 Mill st',
             city: 'Miami',
             state: 'FL'
-          }
+          },
+          image: 'https://dummyimage.com/600x600/080/fff&text=Karen',
+          isActive: false,
         }
       ];
+      this.isLoaded = true;
+      this.enableAdd = true;
+      this.setCurrentClasses();
+      this.setCurrentStyles();
       this.addUser({
-        firstName: 'Karen',
-        lastName: 'Williams'
+        firstName: 'Akrem',
+        lastName: 'Karoui',
+        isActive: true,
       });
-      this.loaded = true;
-    },2000)
-
+    }, 500);
   }
 
 
@@ -60,4 +73,17 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
+  setCurrentClasses(){
+    this.currentClasses = {
+      'btn-success': this.enableAdd,
+      'big-text': this.isExtended,
+    };
+  }
+
+  setCurrentStyles(){
+    this.currentStyles = {
+      'padding-top' : this.isExtended ? '0' : '0.9em',
+      'font-size': this.isExtended ? '' : '2rem'
+    };
+  }
 }

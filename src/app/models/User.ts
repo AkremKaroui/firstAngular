@@ -6,5 +6,7 @@ export class User{
     street: String,
     city: String,
     state: String,
-  }
+  };
+  image?: String;
+  isActive?: boolean;
 }
