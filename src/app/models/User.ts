@@ -9,4 +9,5 @@ export class User{
   };
   isActive?: boolean;
   registered?: any;
+  isHiden?: boolean;
 }

@@ -28,6 +28,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: true,
           registered: new Date('01/02/2014 10:31:33'),
+          isHiden: true,
         },
         {
           firstName: 'Kevin',
@@ -40,6 +41,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: false,
           registered: new Date('01/22/2020 02:20:54'),
+          isHiden: true,
         },
         {
           firstName: 'Karen',
@@ -52,6 +54,7 @@ export class UsersComponent implements OnInit {
           },
           isActive: false,
           registered: new Date('11/02/2019 20:52:01'),
+          isHiden: true,
         }
       ];
       this.isLoaded = true;
@@ -65,5 +68,9 @@ export class UsersComponent implements OnInit {
   fireEvent(e){
     console.log(e.type);
   }
+
+  // toggleHide(user){
+  //   user.hide = !user.hide;
+  // }
 
 }
