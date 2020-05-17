@@ -10,9 +10,7 @@ export class UsersComponent implements OnInit {
   users: User[];
   isExtended: boolean = true;
   isLoaded: boolean = false;
-  enableAdd: boolean = false;
-  currentClasses = {};
-  currentStyles = {};
+  enableAdd: boolean = true;
 
   constructor() { }
 
@@ -28,8 +26,8 @@ export class UsersComponent implements OnInit {
             city: 'Boston',
             state: 'MA'
           },
-          image: 'https://dummyimage.com/600x600/600/fff&text=John',
           isActive: true,
+          registered: new Date('01/02/2014 10:31:33'),
         },
         {
           firstName: 'Kevin',
@@ -40,8 +38,8 @@ export class UsersComponent implements OnInit {
             city: 'Lynn',
             state: 'MA'
           },
-          image: 'https://dummyimage.com/600x600/040/fff&text=Kevin',
           isActive: false,
+          registered: new Date('01/22/2020 02:20:54'),
         },
         {
           firstName: 'Karen',
@@ -52,38 +50,20 @@ export class UsersComponent implements OnInit {
             city: 'Miami',
             state: 'FL'
           },
-          image: 'https://dummyimage.com/600x600/080/fff&text=Karen',
           isActive: false,
+          registered: new Date('11/02/2019 20:52:01'),
         }
       ];
       this.isLoaded = true;
-      this.enableAdd = true;
-      this.setCurrentClasses();
-      this.setCurrentStyles();
-      this.addUser({
-        firstName: 'Akrem',
-        lastName: 'Karoui',
-        isActive: true,
-      });
     }, 500);
   }
 
-
-  addUser(user: User){
+  addUser(user: User) {
     this.users.push(user);
   }
 
-  setCurrentClasses(){
-    this.currentClasses = {
-      'btn-success': this.enableAdd,
-      'big-text': this.isExtended,
-    };
+  fireEvent(e){
+    console.log(e.type);
   }
 
-  setCurrentStyles(){
-    this.currentStyles = {
-      'padding-top' : this.isExtended ? '0' : '0.9em',
-      'font-size': this.isExtended ? '' : '2rem'
-    };
-  }
 }

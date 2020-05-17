@@ -1,12 +1,12 @@
 export class User{
-  firstName: String;
-  lastName: String;
-  age?: Number;
+  firstName: string;
+  lastName: string;
+  age?: number;
   address?: {
-    street: String,
-    city: String,
-    state: String,
+    street: string,
+    city: string,
+    state: string,
   };
-  image?: String;
   isActive?: boolean;
+  registered?: any;
 }
