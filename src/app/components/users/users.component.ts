@@ -7,10 +7,14 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
   users: User[];
-  isExtended: boolean = true;
   isLoaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   showUserForm: boolean = false;
 
   constructor() { }
@@ -21,12 +25,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'John',
           lastName: 'Doe',
-          age: 30,
-          address: {
-            street: '50 Main st',
-            city: 'Boston',
-            state: 'MA'
-          },
+          email: 'John.Doe@gmail.com',
           isActive: true,
           registered: new Date('01/02/2014 10:31:33'),
           isHiden: true,
@@ -34,12 +33,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'Kevin',
           lastName: 'Johnson',
-          age: 34,
-          address: {
-            street: '20 School st',
-            city: 'Lynn',
-            state: 'MA'
-          },
+          email: 'Johnson.Kevin@gmail.com',
           isActive: false,
           registered: new Date('01/22/2020 02:20:54'),
           isHiden: true,
@@ -47,12 +41,7 @@ export class UsersComponent implements OnInit {
         {
           firstName: 'Karen',
           lastName: 'Williams',
-          age: 26,
-          address: {
-            street: '55 Mill st',
-            city: 'Miami',
-            state: 'FL'
-          },
+          email: 'Karen.w@gmail.com',
           isActive: false,
           registered: new Date('11/02/2019 20:52:01'),
           isHiden: true,
@@ -62,21 +51,16 @@ export class UsersComponent implements OnInit {
     }, 500);
   }
 
-  addUser(user: User) {
-    this.users.push(user);
-  }
-
-  fireEvent(e){
-    console.log(e.type);
-  }
-
-  // toggleHide(user){
-  //   user.hide = !user.hide;
-  // }
-
-  onSubmit(e){
-    console.log('DOne');
-    e.preventDefault();
+  addUser() {
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.user.isHiden = true;
+    this.users.unshift(this.user);
+    this.user = {
+      firstName: '',
+      lastName: '',
+      email: '',
+    };
   }
 
 }
